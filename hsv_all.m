@@ -58,22 +58,17 @@ end
     
     figure()
 set(gcf,'unit','normalized','position',[0,0,1,1]);
-out = VideoWriter('pixelart_photo.avi');
-FrameRate=1;
-out.FrameRate=FrameRate;
-open(out);
+
     %给图片赋值
     for i = 0:24
         for j = 0:24
             figname=[num2str(idx_mat(i+1,j+1)) '.png'];
             fig=imread(figname);fig=imresize(fig,0.2);
             I_final(1+i*75:75+i*75,1+j*120:120+j*120,:)=fig;
-            imshow(I_final);
-                F=getframe(gcf);
- 
-    writeVideo(out, F);
+
+
         end
     end
-    close(out)
+            imshow(I_final);
 %无损保存
 imwrite(I_final,'eye.png');
